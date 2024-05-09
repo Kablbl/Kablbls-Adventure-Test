@@ -5,12 +5,14 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Rigidbody rigidbody;
-    public float jumpForce = 10f;
+    public float jumpForceMultiplier = 10f;
+    private SoundManager soundManager;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -18,7 +20,8 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rigidbody.AddForce(Vector3.up * jumpForceMultiplier, ForceMode.Impulse);
+            soundManager.PlayJumpSound();
         }
     }
 }
