@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip jumpSoundClip;
+    public AudioClip jumpSound;
+   
 
-    private void Start()
+    void Start()
     {
-     
+        
+            audioSource = GetComponent<AudioSource>();
+        
     }
 
     public void PlayJumpSound()
     {
-        // Play the jumpSoundClip using the audioSource
-        audioSource.PlayOneShot(jumpSoundClip);
+        audioSource.PlayOneShot(jumpSound);
     }
+
+   
 }
